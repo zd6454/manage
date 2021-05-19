@@ -1,0 +1,9 @@
+<!--pages/my/components/eventsList/inde.wxml-->
+<view>
+   <view  wx:for="{{data}}" wx:key="title" data-set="{{item}}" wx:for-item="item" wx:for-index="index">
+       <view class="head">
+         <image></image>
+         <view></view>
+       </view>
+   </view>
+</view>

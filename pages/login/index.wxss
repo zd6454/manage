@@ -1,0 +1,102 @@
+.page{
+  margin:40rpx;
+ }
+ .headimage{
+  height:600rpx;
+  width: 100%;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  background-color: #ffffff;
+ }
+ .setbox{
+   display: flex;
+   justify-content: center;
+   width:100%;
+ }
+ .headimage .logoset{
+   width:562rpx;
+   height: 562rpx;
+   margin-top: 40rpx;
+   border-radius: 110rpx ;
+   box-shadow: 0rpx 0rpx 90rpx 10rpx rgb(190, 45, 45);
+ }
+ .body{
+   margin-top: 120rpx;
+   justify-content: center;
+   display: block;
+ }
+ .body .fontset{
+   text-align: center;
+   font-size: larger;
+   color:#ff1818 ;
+ }
+ .body .choose{
+   margin-top: 60rpx;
+   align-items: center;
+ }
+ .bt1{
+   margin-top: 20rpx; 
+   background-color: #ff1818;
+   color: white;
+   border-radius:40rpx ;
+ }
+ .bt11{
+   /* margin-top: 20rpx; 
+   background-color: #a5d5f5;
+   color: white;
+   border-radius:40rpx ; */
+   background: #ff1818;
+ }
+ .bt2{
+  margin-top: 20rpx; 
+  background-color: #ff1818;
+  color: white;
+  border-radius:40rpx ;
+ }
+ .bt22{
+   margin-top: 20rpx; 
+   background-color: #ff1818;
+   color: white;
+   border-radius:40rpx ;
+ }
+ 
+ .login{
+   width:100%;
+   margin-top: 150rpx;
+ }
+
+ .name{
+  display: flex;
+ }
+ .iconset{
+   width:46rpx;
+   height:46rpx;
+ }
+ .inputset{
+   width:100%;
+   margin-left: 50rpx;
+ }
+ .passwork{
+   display: flex;
+   margin-top: 15rpx;
+ }
+ .line{
+  background: #ff1818;
+  width: 100%;
+  height: 2rpx;
+  margin-top: 10rpx;
+ }
+ .comfirm{
+  margin-top: 100rpx;
+ }
+ .bt3{
+   background-color: #ff1818;
+   color: white;
+   border-radius:40rpx ;
+ }
+ .bt33{
+   background-color: #e67a7a;
+   color: white;
+   border-radius:40rpx ;
+ }

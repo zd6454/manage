@@ -1,0 +1,24 @@
+<view class="page">   
+    <view class="headimage">
+     <view class="setbox">
+        <image class="logoset" src="../../icons/logo.svg"></image>
+     </view>
+    </view>
+    <view class="login" >
+      <view class="info">
+       <view class="name">
+         <image class="iconset" src="../../icons/my2.png"></image>
+          <input class="inputset" placeholder="请输入账号" bindinput="getname"></input>
+       </view>
+       <view class="line"></view>
+       <view class="passwork">
+         <image class="iconset" src="../../icons/passwork.png"></image> 
+         <input class="inputset" password placeholder="请输入密码" bindinput="getpasswork"></input>
+       </view>
+       <view class="line"></view>
+      </view>
+      <view class="comfirm">
+         <button style="width:80%" class="bt3" hover-class="bt33" bindtap="login">登录</button>
+      </view>
+    </view>
+  </view>

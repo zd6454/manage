@@ -2,8 +2,8 @@
 <view>
   <recycle-view batch="{{batchSetRecycleData}}" id="recycleId">
     <recycle-item  wx:for="{{data}}" wx:key="title" data-set="{{item}}" wx:for-item="item" wx:for-index="index">
-        <view class="head">
-          <view class='headody'>
+        <view class="head" >
+          <view class='headody' hover-class="hoverHeadody">
             <image class="avatar" src="../../../../icons/avatar.png"></image>
               <view class="headbody2">
                   <view class="mainbody">

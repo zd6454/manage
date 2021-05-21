@@ -2,7 +2,9 @@
   "usingComponents": {
     "mp-col": "@miniprogram-component-plus/col",
     "mp-row": "@miniprogram-component-plus/row",
-    "mp-tabs": "@miniprogram-component-plus/tabs"
+    "mp-tabs": "@miniprogram-component-plus/tabs",
+    "pie":"./components/dataShow/index",
+    "event":"./components/eventsList/inde"
   },
   "navigationBarBackgroundColor": "#ff1818",
   "navigationBarTextStyle": "white",

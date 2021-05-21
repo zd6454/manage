@@ -1,0 +1,37 @@
+<!--pages/my/info/index.wxml-->
+<view class="page">
+  <view class="card">
+         <view wx:for="{{items}}"  wx:for-index='index' wx:key='index'  class="list">
+            <view data-index="{{index}}" class="inline"  bindtap="fixone">
+               <view class="myinfo">
+                  {{item.myinfo}}
+               </view>
+               <view class="detail">
+                 <view class="detailInfo">
+                   <view wx:if="{{item.myinfo==='党员头像'}}" bindtap="changeAvatar">
+                     <image class="avatar" src="{{item.content}}" />
+                   </view>
+                   <picker wx:elif="{{index===5||index===6}}" data-index="{{index}}" mode="date" value="{{item.content}}" start="1901-01-01" end="2021-09-01" bindchange="fixchange" >
+                    {{item.content}}
+                   </picker>
+                   <view  wx:else>{{item.content}}</view>
+                  </view>
+                 <view data-item="item" class="switch2">></view>
+               </view>
+            </view>
+         </view>
+     </view>
+  <view class="password" bindtap="changePassword">
+     <view class="inline">
+      <view class="myinfo">修改密码</view>
+      <view class="detail">
+        <view data-item="item" class="switch2">></view>
+      </view>
+     </view>
+  </view>
+
+  <view class="foot">
+      <image class="iconset" src="../../../icons/warn.png"  />
+      <view>修改手机号请联系管理员 </view>
+   </view>
+</view>

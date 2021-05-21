@@ -2,5 +2,12 @@
 .head{
     display: flex;
     width: 100%;
-    height: 300rpx;
+    height: 200rpx;
+    border-radius: 5%;
+    margin:7rpx;
+    background-color: #fff;
+}
+.headody{
+    display: flex;
+    align-items: center;
 }

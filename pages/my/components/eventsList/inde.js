@@ -10,7 +10,13 @@ Component({
     },
     data:{
       type:Array,
-      value:[]
+      value:[{
+        time:'2021-01-01',
+        author:'wxz',
+        title:'打扫草地',
+        avatar:'',
+        statu:'已结束',
+      }]
     }
   },
 

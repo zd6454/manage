@@ -3,8 +3,10 @@
     "pages/index/index",
     "pages/login/index",
     "pages/my/index",
-    "pages/my/myEvents/index",
-    "pages/my/myDatas/index",
+    "pages/my/info/index",
+    "pages/my/edit/index",
+    "pages/my/password/index",
+    "pages/my/eventList/index",
     "pages/event/index",
     "pages/logs/logs"
   ],
@@ -12,7 +14,7 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#ff1818",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"white"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",

@@ -1,0 +1,33 @@
+/* pages/my/edit/index.wxss */
+.page{
+  background-color: rgb(240, 242, 245);
+  height: 100vh;
+  width: 100vw;
+}
+.fix{
+  padding:60rpx;
+}
+.detail{
+  border-bottom: 2rpx solid #ff1818;
+}
+.save{
+  padding-top: 300rpx;
+}
+.check{
+  padding: 20rpx 0rpx;
+}
+.label{
+  padding: 15rpx 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2rpx solid rgb(199, 186, 186);
+}
+.comfirm{
+  background-color: #ff1818 !important;
+  color: #fff !important;
+}
+.comfirm2{
+  background-color: #c56e6e !important;
+  color: #fff !important;
+}

@@ -2,6 +2,9 @@
   <view class="head">
      <view class="avatar">
         <image class="image"  src="{{avatar}}" />
+         <view class="edit" wx:if="{{isLogin}}" >
+                <button class="editbutton" type="warn" size="mini" bindtap="toeditinfo">编辑资料</button>
+         </view>
      </view>
      <view class="login" wx:if="{{!isLogin}}">
         <button class="onLogin" type="warn" bindtap='onlogin'>点击登录</button>
@@ -16,23 +19,19 @@
           <mp-col span="{{12}}">
             <view class="fisrtSet">
               <view class="col">
-                <view class="inline">单位：<view class="lastSet">{{userInfo.unit}}</view></view>
-                <view class="inline">邮箱：<view class="lastSet">无</view></view>
-                <view class="inline">入党时间：<view class="lastSet">{{userInfo.enter_party_time}}</view></view>
+                <view class="inline">活动总时长：<view class="lastSet">0小时</view></view>
               </view>
             </view>
           </mp-col>
           <mp-col span="{{12}}" >
             <view class="fisrtSet">
               <view class="col">
-                <view class="inline">组织：<view class="lastSet">{{userInfo.organization}}</view></view>
-                <view class="inline">学历：<view class="lastSet">{{userInfo.education_lvl}}</view></view>
-                <view class="inline">出生日期：<view class="lastSet">{{birth}}</view></view>
+                <view class="inline">本月要求时长：<view class="lastSet">0/25</view></view>
               </view>
             </view>
           </mp-col>
         </mp-row>
-        <view class="fisrtSet">党员专长:
+        <view class="fisrtSet">我的专长:
           <view class="tags">
                   <view wx:for="{{userInfo.tags}}" wx:key='index' wx:for-item="item" wx:for-index="index">
                      <view>{{item.name+'、'}}</view>
@@ -55,9 +54,15 @@
     activeClass="tab-bar-title__selected"
   >
     <block wx:for="{{tabs}}" wx:key="title">
-      <view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}" bind:tap="handleClick" >
-        <view class="item-title">
-          {{item.title}}
+      <view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}">
+       <view  wx:if="{{activeTab===0}}">
+       1
+       </view>
+       <view wx:if="{{activeTab===1}}">
+         <event></event>
+       </view>
+        <view  wx:if="{{activeTab===2}}">
+          <pie ops="{{ops}}" ops2="{{ops2}}" ></pie>
         </view>
       </view>
     </block>

@@ -18,7 +18,7 @@
        <view class="line"></view>
       </view>
       <view class="comfirm">
-         <button style="width:80%" class="bt3" hover-class="bt33" bindtap="login">登录</button>
+         <button style="width:80%" class="bt3" hover-class="bt33" bindtap="onlogin">登录</button>
       </view>
     </view>
   </view>

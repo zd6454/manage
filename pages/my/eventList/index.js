@@ -1,4 +1,4 @@
-// pages/my/myEvents/index.js
+// pages/my/eventList/index.js
 Page({
 
   /**

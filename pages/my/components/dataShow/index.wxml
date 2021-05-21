@@ -1,2 +1,10 @@
 <!--pages/my/components/dataShow/index.wxml-->
-<text>pages/my/components/dataShow/index.wxml</text>
+<view class="page">
+  <view class="container" >
+       <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}"></ec-canvas>
+  </view>
+  <view class="container" >
+    <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ex }}"></ec-canvas>
+  </view>
+</view>
+

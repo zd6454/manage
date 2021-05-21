@@ -2,8 +2,15 @@
 <view>
    <view  wx:for="{{data}}" wx:key="title" data-set="{{item}}" wx:for-item="item" wx:for-index="index">
        <view class="head">
-         <image></image>
-         <view></view>
+         <!-- <image></image> -->
+         <view class='headody'>
+            <view class="mainbody">
+               <view class="time">{{item.time}}</view>
+               <view class="title">{{item.title}}</view>
+               <view class="author">{{item.author}}</view>
+            </view>
+            <view>{{item.statu}}</view>
+         </view>
        </view>
    </view>
 </view>

@@ -112,5 +112,5 @@
 .weui-tabs-swiper{
   display: block;
   background-color: rgb(240, 242, 245);
-  height: 1200rpx;
+  height: 1350rpx;
 }

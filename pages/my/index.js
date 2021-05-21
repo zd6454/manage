@@ -16,6 +16,8 @@ Page({
    isLogin:false,
    tabs:[{title: '正在进行',}, { title: '历史活动',},{ title: '数据统计',},],
    activeTab: 0,
+   eventsIng:[],
+   eventsAll:[],
    },
 
    onlogin(){
@@ -44,6 +46,7 @@ Page({
      that.setData({isLogin:true,userInfo:res.data,gender,address})
      that.getAvaityTime('user_activity_types')
      that.getAvaityTime('user_month_hours')
+     that.getAllEvents()
      setTimeout(()=>{
          that.setOps()
      },500)
@@ -63,7 +66,45 @@ Page({
     }
     return data;
   },
+  handleEvents(data){
+     let eventsAll=[],eventsIng=[];
+      for(let i=0;i<data.length;i++ ){
+        if(data[i].status<=3){
+          eventsIng.push(data[i])
+        }else{
+          eventsAll.push(data[i])
+        }
+      }
+     this.setData({eventsAll,eventsIng})
+  },
+  //获取历史活动
+  getAllEvents(){
+    let that = this;
+   wx.request({
+     url: 'https://wuhanhszl.com:3000/users/activities',
+     method: 'GET',
+     credentials: 'omit',
+     skipErrorHandler: true,
+     params: {
+      pageSize:  5,
+      filter: {  },
+      current: 0,
+     },
+     header: {
+      'Access-Token': wx.getStorageSync('access-token'),
+      'Token-Type': wx.getStorageSync('token-type'),
+      Client: wx.getStorageSync('client'),
+      Expiry: wx.getStorageSync('expiry'),
+      Uid: wx.getStorageSync('uid'),
+     },
+     success(res){
+    that.handleEvents(res.data.data)
+     }
+   })
+  },
 
+
+  //获取统计数据
   getAvaityTime(type){
     let that=this;
     const{id} = this.data.userInfo;
@@ -215,7 +256,7 @@ Page({
    */
   onLoad: function (options) {
     //  this.getAvatar();
-
+    
     this.getUser();
   },
 

@@ -1,13 +1,42 @@
 /* pages/my/components/eventsList/inde.wxss */
 .head{
     display: flex;
-    width: 100%;
-    height: 200rpx;
-    border-radius: 5%;
-    margin:7rpx;
-    background-color: #fff;
+    width: 98vw;
+    height: 200rpx ;
+}
+.avatar{
+    width:100rpx;
+    height:80rpx;
+    margin-left: 10rpx;
 }
 .headody{
     display: flex;
+    width: 100%;
     align-items: center;
+    margin:10rpx 20rpx;
+    border-radius: 33rpx;
+    background-color: #fff;
+    box-shadow: -3rpx 4rpx 13rpx 7rpx #d1d8d1;
+}
+.headbody2{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin:0rpx 40rpx;
+    justify-content: space-between;
+}
+.mainbody{
+ color: #8e998e;
+ font-size: 25rpx;
+}
+.title{
+    font-size: 30rpx;
+    font-weight: bold;
+    color: black;
+    margin: 10rpx 0rpx;
+}
+.statu{
+    font-size: 25rpx;
+    color: rgb(163, 148, 148);
+    font-weight: bold;
 }

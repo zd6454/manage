@@ -108,7 +108,8 @@
 .tab-content{
   position: relative;
 }
-swiper {
+
+.weui-tabs-swiper{
   display: block;
   background-color: rgb(240, 242, 245);
   height: 1200rpx;

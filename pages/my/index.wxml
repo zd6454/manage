@@ -56,10 +56,10 @@
     <block wx:for="{{tabs}}" wx:key="title">
       <view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}">
        <view  wx:if="{{activeTab===0}}">
-       1
+        <event  data="{{eventsIng}}" ></event>
        </view>
        <view wx:if="{{activeTab===1}}">
-         <event></event>
+         <event data="{{eventsAll}}" ></event>
        </view>
         <view  wx:if="{{activeTab===2}}">
           <pie ops="{{ops}}" ops2="{{ops2}}" ></pie>

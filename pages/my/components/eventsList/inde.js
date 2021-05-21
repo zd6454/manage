@@ -10,13 +10,22 @@ Component({
     },
     data:{
       type:Array,
-      value:[{
+      value:[
+        {
         time:'2021-01-01',
         author:'wxz',
         title:'打扫草地',
         avatar:'',
         statu:'已结束',
-      }]
+      },
+      {
+        time:'2021-01-01',
+        author:'wxz',
+        title:'打扫草地',
+        avatar:'',
+        statu:'已结束',
+      },
+    ]
     }
   },
 
@@ -24,7 +33,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    
+    status:['待审核','未开始','进行中','已完成','反馈中','已结束','已驳回','已作废']
   },
 
   /**

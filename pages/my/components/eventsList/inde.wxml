@@ -1,16 +1,24 @@
 <!--pages/my/components/eventsList/inde.wxml-->
 <view>
-   <view  wx:for="{{data}}" wx:key="title" data-set="{{item}}" wx:for-item="item" wx:for-index="index">
-       <view class="head">
-         <!-- <image></image> -->
-         <view class='headody'>
-            <view class="mainbody">
-               <view class="time">{{item.time}}</view>
-               <view class="title">{{item.title}}</view>
-               <view class="author">{{item.author}}</view>
-            </view>
-            <view>{{item.statu}}</view>
-         </view>
-       </view>
-   </view>
+  <recycle-view batch="{{batchSetRecycleData}}" id="recycleId">
+    <recycle-item  wx:for="{{data}}" wx:key="title" data-set="{{item}}" wx:for-item="item" wx:for-index="index">
+        <view class="head">
+          <view class='headody'>
+            <image class="avatar" src="../../../../icons/avatar.png"></image>
+              <view class="headbody2">
+                  <view class="mainbody">
+                      <view class="time">{{item.date}}</view>
+                      <view class="title">{{item.name}}</view>
+                      <view class="author">
+                      负责人：{{item.director_name}}
+                      <view class="location">{{item.location}}</view>
+                      </view>
+                    </view>
+                    <view class="statu">{{status[item.status]}}</view>
+              </view>
+          </view>
+        </view>
+    </recycle-item>
+  </recycle-view>
+   
 </view>

@@ -43,9 +43,13 @@ Page({
       Uid: wx.getStorageSync('uid'),
      },
      success(res){
-       console.log(res)
       that.handleevents(res.data.data.slice(0,5))
      }
+   })
+  },
+  toDetail(e){
+   wx.navigateTo({
+     url: './detail/index',
    })
   },
  onLoad(options){

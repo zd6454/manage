@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="page">
-    <view wx:for="{{list}}" wx:key="item" data-item="{{item}}" wx:for-item="item" wx:for-index="index" class="" >
-       <view class="body" hover-class="bodyHover" >
+    <view wx:for="{{list}}" wx:key="item" data-item="{{item}}" wx:for-item="item" wx:for-index="index"  >
+       <view class="body" hover-class="bodyHover" bindtap="toDetail" >
         <image class="iconset" src="{{item.avatar}}"></image>
          <view class="headBody">
             <view class="author">

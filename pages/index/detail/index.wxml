@@ -1,0 +1,19 @@
+<!--pages/index/detail/index.wxml-->
+<view>
+  <view class="head">
+    <view class="headBody">
+        <view class="headName">
+          <image class="iconset" src="../../../icons/avatar.png"></image> 
+          <view class="name">admin1</view>
+        </view>
+      <view class="headInfo">
+        <view class="timen">2021-05-22</view>
+      </view>.
+    </view>
+  </view>
+  <view class="body">
+      <view class="title">第一网格负责人测试1号->测试2号</view>
+      <view class="content">理工大东社区第一网格负责人换为测试2号，明日起生效</view>
+  </view>
+  <view class="foot"></view>
+</view>

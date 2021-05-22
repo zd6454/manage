@@ -1,7 +1,7 @@
 <view class="page">
   <view class="head">
      <view class="avatar">
-        <image class="image"  src="{{avatar}}" />
+        <image class="image"  src="{{userInfo.avatar}}" />
          <view class="edit" wx:if="{{isLogin}}" >
                 <button class="editbutton" type="warn" size="mini" bindtap="toeditinfo">编辑资料</button>
          </view>

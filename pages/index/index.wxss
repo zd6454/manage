@@ -1,19 +1,62 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
+.page{
+  background-color: rgb(240, 242, 245);
+  /* direction: column;
   align-items: center;
-  color: #aaa;
+  justify-content: center; */
+  height: 100vh;
+  width: 100vw;
 }
-
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
+.iconset{
+  width:64rpx;
+  height: 64rpx;
+  margin: auto 20rpx;
+}
+.body{
   margin: 20rpx;
-  border-radius: 50%;
+  width: 94vw;
+  height:100%;
+  border-radius: 10rpx;
+  background-color: white;
+  box-shadow: -3rpx 0rpx 13rpx 7rpx #d1d8d1;
+  display: flex;
 }
-
-.usermotto {
-  margin-top: 200px;
+.bodyHover{
+  margin: 20rpx;
+  width: 94vw;
+  height:100%;
+  border-radius: 10rpx;
+  background-color: rgb(233, 231, 231);
+  box-shadow: -3rpx 0rpx 13rpx 7rpx #d1d8d1;
+  display: flex;
+}
+.headBody{
+ width: 80%;
+ 
+}
+.author{
+  padding-top: 5rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.name{
+  font-weight: 450;
+  font-size: 28rpx;
+  color: rgb(152, 155, 158);
+}
+.time{
+  color: rgb(152, 155, 158);
+  font-size: 25rpx;
+}
+.mainBody{
+  font-size: 33rpx;
+  padding: 10rpx 0rpx;
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+}
+.type{
+  font-size: 30rpx;
+  width: 150rpx;
 }

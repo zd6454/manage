@@ -1,4 +1,18 @@
 <!--index.wxml-->
-<view class="container">
- 
+<view class="page">
+    <view wx:for="{{list}}" wx:key="item" data-item="{{item}}" wx:for-item="item" wx:for-index="index" class="" >
+       <view class="body" hover-class="bodyHover" >
+        <image class="iconset" src="{{item.avatar}}"></image>
+         <view class="headBody">
+            <view class="author">
+              <view class="name">发布人：{{item.director_name}}</view>
+              <view class="time">{{item.date}}</view>
+            </view>
+            <view class="mainBody">
+                <view class="type">{{item.type}}:</view>
+                <view >{{item.name}}</view>
+            </view>
+         </view>
+       </view>
+    </view>
 </view>

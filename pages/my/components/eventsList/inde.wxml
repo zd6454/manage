@@ -2,9 +2,9 @@
 <view>
   <recycle-view batch="{{batchSetRecycleData}}" id="recycleId">
     <recycle-item  wx:for="{{data}}" wx:key="title" data-set="{{item}}" wx:for-item="item" wx:for-index="index">
-        <view class="head" >
+        <view class="head" data-item="{{item}}"  bindtap="detail">
           <view class='headody' hover-class="hoverHeadody">
-            <image class="avatar" src="../../../../icons/avatar.png"></image>
+            <image class="avatar" src="../../../../icons/activity.png"></image>
               <view class="headbody2">
                   <view class="mainbody">
                       <view class="time">{{item.date}}</view>

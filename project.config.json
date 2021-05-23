@@ -30,6 +30,7 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
+    "bundle": false,
     "useIsolateContext": false,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
@@ -40,7 +41,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.17.0",
-  "appid": "wx1f0d4bbc6dd186cc",
+  "appid": "wx449aecac0d1e2279",
   "projectname": "managemanage",
   "debugOptions": {
     "hidedInDevtools": []
@@ -76,6 +77,12 @@
         {
           "name": "pages/my/info/index",
           "pathName": "pages/my/info/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "可加入的活动",
+          "pathName": "pages/event/index",
           "scene": null
         }
       ]

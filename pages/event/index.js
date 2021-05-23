@@ -49,9 +49,9 @@ Page({
     /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-    this.setData({activityList:[],searchList:[],currentPage:1,totalList:0,haveMore:true,inputVal: "",})
-  },
+  // onPullDownRefresh: function () {
+  //   this.setData({activityList:[],searchList:[],currentPage:1,totalList:0,haveMore:true,inputVal: "",})
+  // },
 
   search: function (value) {
     this.setData({inputVal:value})

@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/index/detail/index",
     "pages/login/index",
@@ -9,36 +9,41 @@
     "pages/my/password/index",
     "pages/my/eventList/index",
     "pages/event/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/detail/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ff1818",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#a9b7b7",
     "selectedColor": "#ff1818",
-    "borderStyle":"white",
-    "list": [{
-      "selectedIconPath": "icons/event2.png",
-      "iconPath": "icons/event.png",
-      "pagePath": "pages/event/index",
-      "text": "活动"
-    }, {
-      "selectedIconPath": "icons/undone2.png",
-      "iconPath": "icons/undone.png",
-      "pagePath": "pages/index/index",
-      "text": "事宜通知"
-    }, {
-      "selectedIconPath": "icons/my2.png",
-      "iconPath": "icons/my.png",
-      "pagePath": "pages/my/index",
-      "text": "我的"
-    }]
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "icons/event2.png",
+        "iconPath": "icons/event.png",
+        "pagePath": "pages/event/index",
+        "text": "活动"
+      },
+      {
+        "selectedIconPath": "icons/undone2.png",
+        "iconPath": "icons/undone.png",
+        "pagePath": "pages/index/index",
+        "text": "事宜通知"
+      },
+      {
+        "selectedIconPath": "icons/my2.png",
+        "iconPath": "icons/my.png",
+        "pagePath": "pages/my/index",
+        "text": "我的"
+      }
+    ]
   },
   "permission": {
     "scope.userLocation": {

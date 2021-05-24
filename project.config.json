@@ -1,4 +1,5 @@
 {
+
   "description": "项目配置文件",
   "packOptions": {
     "ignore": []
@@ -30,6 +31,7 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
+    "bundle": false,
     "useIsolateContext": false,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
@@ -76,6 +78,31 @@
         {
           "name": "pages/my/info/index",
           "pathName": "pages/my/info/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "可加入的活动",
+          "pathName": "pages/event/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/index",
+          "pathName": "pages/my/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/detail/index",
+          "pathName": "pages/detail/index",
+          "query": "activity_id=137",
+          "scene": null
+        },
+        {
+          "name": "pages/detail/components/routePlanning/index",
+          "pathName": "pages/detail/components/routePlanning/index",
+          "query": "activity_id=137",
           "scene": null
         }
       ]

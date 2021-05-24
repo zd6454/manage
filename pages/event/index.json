@@ -1,9 +1,13 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "mp-tabs": "@miniprogram-component-plus/tabs",
+    "event":"../my/components/eventsList/inde",
+    "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
+  },
   "navigationBarBackgroundColor": "#ff1818",
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "活动",
   "enablePullDownRefresh":true,
   "backgroundTextStyle":"light",
   "backgroundColor":"#2f2f30"
-}
+  }

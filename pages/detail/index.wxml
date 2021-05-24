@@ -1,0 +1,136 @@
+<!--pages/detail/index.wxml-->
+<view>
+  <view class="info">
+    <text class="info_name">{{activity_name}}</text>
+    <text class="info_items">
+      <text class="item_title">活动编号：</text>
+      <text class="item_content">{{activity_id}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">活动描述：</text>
+      <text class="item_content">{{activity_description}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">活动地点：</text>
+      <text class="item_content">{{activity_location}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">活动时间：</text>
+      <text class="item_content">{{activity_date}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">负责人：</text>
+      <text class="item_content">{{activity_director}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">批准人：</text>
+      <text class="item_content">{{activity_authorizer}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">批准时间：</text>
+      <text class="item_content">{{authorized_time}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">活动类型：</text>
+      <text class="item_content">{{activity_category}}</text>
+    </text>
+  </view>
+  
+  <view class="progress_graph">
+    <view class="graph_title">活动进度</view>
+    <view class="divLine"></view>
+    <view class="steps_box"> 
+      <progress percent="{{steps*percent}}"  class="progress" stroke-width="1.5" color="red" backgroundColor="rgb(185, 187, 190)" style="width:{{progress}}%"/>
+      <view class="steps_all">
+        <view class="steps_one_box" wx:for="{{stepsList}}" wx:key="index">
+          <view class='{{steps==index?"steps":steps<index?"steps3":"steps2"}}'>
+            <image wx:if="{{steps==index}}" src="../../icons/ok.png" class="steps_img"></image>
+          </view>
+          <view class="{{steps>=index?'steps_wenzi':'steps_wenzi2'}}" >{{stepsList[index]}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="operation">
+    <view wx:if="{{steps==0}}">
+      预案审核
+    </view>
+    <view wx:if="{{steps==1}}">
+      开始报名
+      <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
+    </view>
+
+    <view wx:if="{{steps==2}}">
+      活动进行
+      <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
+    </view>
+
+    <view wx:if="{{steps==3}}">
+      <view wx:if="{{participantInfo.feedback == null}}">
+        <view class="page-section-title">请提交活动反馈：</view>
+        <view class="textarea-wrp">
+          <textarea placeholder="请输入不小于10个字的活动反馈"  bindblur="getDataBindTap" auto-focus="true"/>
+        </view>
+        <view class="wrap">
+          <view class="img-wrap">
+            <view class="txt">上传活动图片：</view>
+            <view class="imglist">
+              <view class="item" wx:for="{{imgs}}" wx:key="item">
+                <image src="{{item}}" alt=""></image>
+                <view class='delete' bindtap='deleteImg' data-index="{{index}}">
+                  <image src="../../icons/delete.png"></image>
+                </view>
+              </view>
+              <view class="last-item" wx:if="{{imgs.length >= 1 ? false : true}}" bindtap="bindUpload">
+                <text class="sign">+</text>
+              </view>
+            </view>
+          </view>
+        </view>  
+
+        <view class="btn-area">
+          <button class="submit" type="primary" formType="submit" bindtap="submit_report">提交
+          </button>
+        </view>
+
+      </view>
+      <view wx:elif="{{participantInfo.confirmed == false && participantInfo.reject_reason==null}}">
+        <view class="verify">
+          <image src="../../icons/wait.png" class="vertify_img"></image>
+          <text class="vertify_title">报告审核中</text>
+          <text class="vertify_notice">您已提交活动报告，负责人审核中！</text>  
+        </view>
+      </view>
+      <view wx:elif="{{participantInfo.confirmed == false && participantInfo.reject_reason!=null}}">
+        <view class="verify">
+          <image src="../../icons/notaccess.png" class="vertify_img"></image>
+          <text class="vertify_title">报告审核不通过</text>
+          <text class="vertify_notice">您的活动报告未通过审核！</text>  
+        </view>
+      </view>
+      <view wx:elif="{{participantInfo.confirmed == true}}">
+        <view class="verify">
+          <image src="../../icons/access.png" class="vertify_img"></image>
+          <text class="vertify_title">报告审核通过</text>
+          <text class="vertify_notice">您的活动报告已被审核通过，感谢您的参与！</text>  
+        </view>
+      </view>
+      <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
+
+    </view>
+
+    <view wx:if="{{steps==4}}">
+      <view class="verify">
+          <image src="../../icons/access.png" class="vertify_img"></image>
+          <text class="vertify_title">活动结束</text>
+          <text class="vertify_notice">此活动已圆满完成，感谢您的参与！
+          </text>  
+      </view>
+    </view>
+
+    
+
+  </view>
+
+</view>

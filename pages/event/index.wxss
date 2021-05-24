@@ -1,1 +1,14 @@
 /* pages/event/index.wxss */
+page{
+  height: 100%;
+}
+.weui-search-bar__box .weui-search-bar__input {
+  padding: 6rpx 0;
+}
+.weui-search-bar {
+  padding: 12rpx;
+}
+.weui-search-bar__cancel-btn {
+ font-size: 30rpx;
+}
+

@@ -1,2 +1,6 @@
 <!--pages/event/index.wxml-->
-<text>pages/event/index.wxml</text>
+<!-- <text>pages/event/index.wxml</text> -->
+<view>
+  <mp-searchbar  search="{{search}}" ></mp-searchbar>
+  <event  data="{{inputVal ? searchList: activityList}}" ></event>
+</view>

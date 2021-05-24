@@ -1,7 +1,7 @@
 <!--pages/my/components/eventsList/inde.wxml-->
 <view>
   <recycle-view batch="{{batchSetRecycleData}}" id="recycleId">
-    <recycle-item  wx:for="{{data}}" wx:key="title" data-set="{{item}}" wx:for-item="item" wx:for-index="index">
+    <recycle-item  wx:for="{{data}}" wx:key="title" data-set="{{item}}" wx:for-item="item" wx:for-index="index" bindtap='gotoActivityDetail' data-item="{{item}}">
         <view class="head" data-item="{{item}}"  bindtap="detail">
           <view class='headody' hover-class="hoverHeadody">
             <image class="avatar" src="../../../../icons/activity.png"></image>

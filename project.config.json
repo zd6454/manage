@@ -80,7 +80,7 @@
 					"id": 1,
 					"name": "detail",
 					"pathName": "pages/detail/index",
-					"query": "activity_id=137",
+					"query": "activity_id=144",
 					"scene": null
 				}
 			]

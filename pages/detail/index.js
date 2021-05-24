@@ -36,6 +36,17 @@ Page({
     imgs: [],
     count: 1,
 
+    src: "",
+    who: "",
+    openid: "",
+    windowWidth: 0,
+    canvasshow: true,
+    access_token: '',
+
+    register:0, //0未签到,1签到成功
+
+    register_btn:true,
+
   },
 
   /**
@@ -44,6 +55,25 @@ Page({
   onLoad: function (options) {
     console.log(options.activity_id);
     this.getActivity(options.activity_id);
+
+  },
+
+  handle_register(){
+    this.setData({
+      register_btn:false,
+    })
+
+    var that = this
+
+    //屏幕宽度
+    var sysInfo = wx.getSystemInfoSync()
+    console.log("sysInfo", sysInfo)
+    that.setData({
+      windowWidth: sysInfo.windowWidth,
+    })
+    that.ctx = wx.createCameraContext()
+
+    this.track();
   },
 
   gotoRoutePlanning(){
@@ -129,8 +159,6 @@ Page({
     })
   },
 
-
-
   //初始化活动信息
   getActivity(activity_id) {
     let that = this;
@@ -184,9 +212,11 @@ Page({
   },
 
   submit_report: function(){
+    console.log('img',this.data.imgs)
     let formatData = {
       "content": this.data.content,
-      "img":this.data.imgs[0],
+      // "img":this.data.imgs.tempFilePaths[0],
+      "img": this.data.imgs[0],
     }
     console.log(formatData);
 
@@ -304,7 +334,171 @@ Page({
         }
       }
     })
-  }
+  },
 
+  track() {
+    this.setData({
+      canvasshow: true
+    })
+    this.takePhoto();
+    this.interval = setInterval(this.takePhoto, 500);
+  },
+
+  async takePhoto() {
+    console.log("takePhoto")
+    var that = this
+    var takephonewidth
+    var takephoneheight
+    that.ctx.takePhoto({
+      quality: 'low',
+      success: (res) => {
+        // console.log(res.tempImagePath),
+        // 获取图片真实宽高
+        wx.getImageInfo({
+          src: res.tempImagePath,
+          success: function (res) {
+            takephonewidth = res.width,
+            takephoneheight = res.height
+          }
+        })
+        // console.log(takephonewidth, takephoneheight)
+        wx.getFileSystemManager().readFile({
+          filePath: res.tempImagePath, //选择图片返回的相对路径
+          encoding: 'base64', //编码格式
+          success: res => { //成功的回调
+            // console.log('data:image/png;base64,' + res.data),
+            wx.request({
+              url: "https://aip.baidubce.com/rest/2.0/face/v3/detect?access_token=24.a02ba5d76d3dc462e94baa37834033ee.2592000.1623984166.282335-23796596",
+              data: {
+                image: res.data,
+                image_type: "BASE64",
+                max_face_num: 10
+              },
+              method: 'POST',
+              dataType: "json",
+              header: {
+                'content-type': 'application/json'
+              },
+              success: function (res) {
+                console.log(res.data);
+                if (res.data.error_code === 0) {
+                  var ctx = wx.createContext()
+                  ctx.setStrokeStyle('#31859c')
+                  ctx.lineWidth = 3
+                  for (let j = 0; j < res.data.result.face_num; j++) {
+                    var cavansl = res.data.result.face_list[j].location.left / takephonewidth * that.data.windowWidth
+                    var cavanst = res.data.result.face_list[j].location.top / takephoneheight * that.data.windowWidth
+                    var cavansw = res.data.result.face_list[j].location.width / takephonewidth * that.data.windowWidth
+                    var cavansh = res.data.result.face_list[j].location.height / takephoneheight * that.data.windowWidth
+                    ctx.strokeRect(cavansl, cavanst, cavansw, cavansh)
+                  }
+                  wx.drawCanvas({
+                    canvasId: 'canvas',
+                    actions: ctx.getActions()
+                  })
+                } else {
+                  var ctx = wx.createContext()
+                  ctx.setStrokeStyle('#31859c')
+                  ctx.lineWidth = 3
+                  wx.drawCanvas({
+                    canvasId: 'canvas',
+                    actions: ctx.getActions()
+                  })
+                }
+
+                clearInterval(that.interval);
+                that.search()
+              },
+            })
+          }
+        })
+      }
+    })
+
+
+  },
+
+  search() {
+    let result = false;
+    console.log('search')
+    var that = this
+    that.setData({
+      who: ""
+    })
+    var takephonewidth
+    var takephoneheight
+    that.ctx.takePhoto({
+      quality: 'heigh',
+      success: (res) => {
+        // console.log(res.tempImagePath),
+        // 获取图片真实宽高
+        wx.getImageInfo({
+          src: res.tempImagePath,
+          success: function (res) {
+            takephonewidth = res.width,
+            takephoneheight = res.height
+          }
+        })
+        that.setData({
+          src: res.tempImagePath
+        }),
+          wx.getFileSystemManager().readFile({
+            filePath: that.data.src, //选择图片返回的相对路径
+            encoding: 'base64', //编码格式
+            success: res => {
+              wx.request({
+                url: "https://aip.baidubce.com/rest/2.0/face/v3/search?access_token=24.a02ba5d76d3dc462e94baa37834033ee.2592000.1623984166.282335-23796596'",
+                data: {
+                  image: res.data,
+                  image_type: "BASE64",
+                  group_id_list: "users",
+                  // max_face_num: 10,
+                  // match_threshold: 60,
+                },
+                method: 'POST',
+                dataType: "json",
+                header: {
+                  'content-type': 'application/json'
+                },
+                success: function (res) {
+                  console.log(res.data);
+                  if (res.data.result &&
+                  res.data.result.user_list.length > 0 &&
+                  res.data.result.user_list[0].score > 90){
+                      that.setData({
+                        register: 1,
+                      })
+                  } else {
+
+                    wx.showToast({
+                      title: '人脸识别失败,请重新签到',
+                      icon: 'error',
+                      duration: 3000
+                    })
+
+                    that.setData({
+                      register_btn: true,
+                    })
+                  }
+                  
+                },
+              })
+            }
+          })
+      }
+    })
+
+    return result;
+
+  },
+
+  onUnload: function () {
+    var that = this
+    clearInterval(that.interval)
+  },
+
+  error(e) {
+    console.log(e.detail)
+  }
 
 })

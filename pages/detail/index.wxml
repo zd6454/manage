@@ -1,0 +1,80 @@
+<!--pages/detail/index.wxml-->
+<view>
+  <view class="info">
+    <text class="info_name">{{activity_name}}</text>
+    <text class="info_items">
+      <text class="item_title">活动编号：</text>
+      <text class="item_content">{{activity_id}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">活动描述：</text>
+      <text class="item_content">{{activity_description}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">活动地点：</text>
+      <text class="item_content">{{activity_location}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">活动时间：</text>
+      <text class="item_content">{{activity_date}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">负责人：</text>
+      <text class="item_content">{{activity_director}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">批准人：</text>
+      <text class="item_content">{{activity_authorizer}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">批准时间：</text>
+      <text class="item_content">{{authorized_time}}</text>
+    </text>
+    <text class="info_items">
+      <text class="item_title">活动类型：</text>
+      <text class="item_content">{{activity_category}}</text>
+    </text>
+    
+  </view>
+  
+  <view class="progress_graph">
+    <view class="graph_title">活动进度</view>
+    <!-- <view class="divLine"></view> -->
+    <view class="steps_box"> 
+      <progress percent="{{steps*percent}}"  class="progress" stroke-width="1.5" color="red" backgroundColor="rgb(185, 187, 190)" style="width:{{progress}}%"/>
+      <view class="steps_all">
+        <view class="steps_one_box" wx:for="{{stepsList}}" wx:key="index">
+          <view class='{{steps==index?"steps":steps<index?"steps3":"steps2"}}'>
+            <image wx:if="{{steps==index}}" src="../../icons/ok.png" class="steps_img"></image>
+          </view>
+          <view class="{{steps>=index?'steps_wenzi':'steps_wenzi2'}}" >{{stepsList[index]}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="operation">
+    <view wx:if="{{steps==0}}">
+      预案审核
+    </view>
+    <view wx:if="{{steps==1}}">
+      开始报名
+      <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
+    </view>
+    <view wx:if="{{steps==2}}">
+      活动进行
+      <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
+
+    </view>
+    <view wx:if="{{steps==3}}">
+      活动完成
+      <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
+
+    </view>
+    <view wx:if="{{steps==4}}">
+      活动结束
+    </view>
+
+  </view>
+
+</view>

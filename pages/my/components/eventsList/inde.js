@@ -42,6 +42,12 @@ Component({
   methods: {
   detail(e){
     console.log(e)
+  },
+  gotoActivityDetail(e){
+    wx.navigateTo({
+      url: '../../../../detail/index?activity_id='+e.currentTarget.dataset.item.id,
+      // url:'../../../../detail/components/routePlanning/index'
+    })
   }
   }
 })

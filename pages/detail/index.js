@@ -46,6 +46,14 @@ Page({
     this.getActivity(options.activity_id);
   },
 
+  gotoRoutePlanning(){
+    const {activity_location} = this.data;
+    wx.navigateTo({
+      // url: '../../../../detail/index?activity_id='+e.currentTarget.dataset.item.id,
+      url:'./components/routePlanning/index?activity_location='+activity_location
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

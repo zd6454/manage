@@ -10,7 +10,9 @@
     "pages/my/eventList/index",
     "pages/event/index",
     "pages/logs/logs",
-    "pages/detail/index"
+    "pages/detail/index",
+    "pages/detail/components/routePlanningPage/index",
+    "pages/detail/components/routePlanning/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

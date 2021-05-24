@@ -56,13 +56,14 @@
     <view wx:if="{{steps==0}}">
       预案审核
     </view>
-
     <view wx:if="{{steps==1}}">
       开始报名
+      <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
     </view>
 
     <view wx:if="{{steps==2}}">
       活动进行
+      <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
     </view>
 
     <view wx:if="{{steps==3}}">
@@ -115,6 +116,8 @@
           <text class="vertify_notice">您的活动报告已被审核通过，感谢您的参与！</text>  
         </view>
       </view>
+      <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
+
     </view>
 
     <view wx:if="{{steps==4}}">

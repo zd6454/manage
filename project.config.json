@@ -1,89 +1,111 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": true,
-		"postcss": true,
-		"preloadBackgroundData": false,
-		"minified": true,
-		"newFeature": false,
-		"coverView": true,
-		"nodeModules": true,
-		"autoAudits": false,
-		"showShadowRootInWxmlPanel": true,
-		"scopeDataCheck": false,
-		"uglifyFileName": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
-		"useMultiFrameRuntime": true,
-		"useApiHook": true,
-		"useApiHostProcess": false,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		},
-		"enableEngineNative": false,
-		"useIsolateContext": false,
-		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false,
-		"userConfirmedBundleSwitch": false,
-		"packNpmManually": false,
-		"packNpmRelationList": [],
-		"minifyWXSS": true
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.17.0",
-	"appid": "wx1f0d4bbc6dd186cc",
-	"projectname": "managemanage",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"scripts": {},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"gamePlugin": {
-			"list": []
-		},
-		"miniprogram": {
-			"list": [
-				{
-					"id": -1,
-					"name": "pages/event/index",
-					"pathName": "pages/event/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 1,
-					"name": "detail",
-					"pathName": "pages/detail/index",
-					"query": "activity_id=144",
-					"scene": null
-				}
-			]
-		}
-	}
+
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "bundle": false,
+    "useIsolateContext": false,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.17.0",
+  "appid": "wx449aecac0d1e2279",
+  "projectname": "managemanage",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {},
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/my/index",
+          "pathName": "pages/my/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/login/index",
+          "pathName": "pages/login/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/info/index",
+          "pathName": "pages/my/info/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "可加入的活动",
+          "pathName": "pages/event/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/my/index",
+          "pathName": "pages/my/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/detail/index",
+          "pathName": "pages/detail/index",
+          "query": "activity_id=137",
+          "scene": null
+        },
+        {
+          "name": "pages/detail/components/routePlanning/index",
+          "pathName": "pages/detail/components/routePlanning/index",
+          "query": "activity_id=137",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

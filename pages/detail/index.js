@@ -15,9 +15,11 @@ Page({
     created_at: "xxx",
     activity_date: "xxx",
     activity_director: "xxx",
+    participantInfo:null,
+    content:null,
 
     //设置当前完成步数
-    steps: 2,
+    steps: 0,
 
     // 当步骤为五步时步骤名不可超过五个汉字
     stepsList: ["预案审核", "开始报名", "活动进行", "活动完成", "活动结束"],
@@ -31,6 +33,19 @@ Page({
     //   progress: 67,
     //   percent: 50,
 
+    imgs: [],
+    count: 1,
+
+    src: "",
+    who: "",
+    openid: "",
+    windowWidth: 0,
+    canvasshow: true,
+    access_token: '',
+
+    register:0, //0未签到,1签到成功
+
+    register_btn:true,
 
   },
 
@@ -40,6 +55,25 @@ Page({
   onLoad: function (options) {
     console.log(options.activity_id);
     this.getActivity(options.activity_id);
+
+  },
+
+  handle_register(){
+    this.setData({
+      register_btn:false,
+    })
+
+    var that = this
+
+    //屏幕宽度
+    var sysInfo = wx.getSystemInfoSync()
+    console.log("sysInfo", sysInfo)
+    that.setData({
+      windowWidth: sysInfo.windowWidth,
+    })
+    that.ctx = wx.createCameraContext()
+
+    this.track();
   },
 
   gotoRoutePlanning(){
@@ -99,6 +133,32 @@ Page({
 
   },
 
+  //获取反馈信息
+  getParticipants(activity_id) {
+    let that = this;
+    wx.request({
+      url: 'https://wuhanhszl.com:3000/activities/' + activity_id +'/participant',
+      method: 'GET',
+      header: {
+        'access-token': wx.getStorageSync('access-token'),
+        'token-type': wx.getStorageSync('token-type'),
+        client: wx.getStorageSync('client'),
+        expiry: wx.getStorageSync('expiry'),
+        uid: wx.getStorageSync('uid'),
+      },
+      credentials: 'omit',
+      success(res) {
+        console.log(res.data);
+        that.setData({
+          participantInfo: res.data,
+        })
+      },
+      fail(err) {
+        console.log(err)
+      }
+    })
+  },
+
   //初始化活动信息
   getActivity(activity_id) {
     let that = this;
@@ -130,6 +190,10 @@ Page({
           steps: activity_data.status,
         });
 
+        if (activity_data.status==3){
+          that.getParticipants(activity_data.id)
+        }
+
 
       },
       fail(err) {
@@ -137,4 +201,304 @@ Page({
       }
     })
   },
+
+  getDataBindTap: function (e) {
+    var result = e.detail.value;
+
+    this.setData({
+      content:result,
+    })
+
+  },
+
+  submit_report: function(){
+    console.log('img',this.data.imgs)
+    let formatData = {
+      "content": this.data.content,
+      // "img":this.data.imgs.tempFilePaths[0],
+      "img": this.data.imgs[0],
+    }
+    console.log(formatData);
+
+    let that = this;
+    wx.request({
+      url: 'https://wuhanhszl.com:3000/activities/' + that.data.activity_id +'/report',
+      method: 'POST',
+      data:formatData,
+      header: {
+        'access-token': wx.getStorageSync('access-token'),
+        'token-type': wx.getStorageSync('token-type'),
+        client: wx.getStorageSync('client'),
+        expiry: wx.getStorageSync('expiry'),
+        uid: wx.getStorageSync('uid'),
+      },
+      credentials: 'omit',
+      success(res) {
+        console.log(res.data);
+
+        that.setData({
+          participantInfo: { feedback: '1', confirmed: false, reject_reason: null }
+        })
+        
+      },
+      fail(err) {
+        console.log(err)
+      }
+    })
+
+
+  },
+
+  bindUpload: function (e) {
+    console.log(e);
+    switch (this.data.imgs.length) {
+      case 0:
+        this.data.count = 3
+        break
+      case 1:
+        this.data.count = 2
+        break
+      case 2:
+        this.data.count = 1
+        break
+    }
+    var that = this
+    wx.chooseImage({
+      count: that.data.count, // 默认3
+      sizeType: ["original", "compressed"], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ["album", "camera"], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        console.log('res',res);
+        var tempFilePaths = res.tempFilePaths;
+        that.setData({
+          imgs: {tempFilePaths} //创建一个object URL，并不是你的本地路径
+        })
+
+        // for (var i = 0; i < tempFilePaths.length; i++) {
+        //   wx.uploadFile({
+        //     url: 'https://graph.baidu.com/upload',
+        //     filePath: tempFilePaths[i],
+        //     name: "file",
+        //     header: {
+        //       "content-type": "multipart/form-data"
+        //     },
+        //     success: function (res) {
+        //       if (res.statusCode == 200) {
+        //         wx.showToast({
+        //           title: "上传成功",
+        //           icon: "none",
+        //           duration: 1500
+        //         })
+
+        //         that.data.imgs.push(JSON.parse(res.data).data)
+
+        //         that.setData({
+        //           imgs: that.data.imgs
+        //         })
+        //       }
+        //       console.log("imgs", that.data.imgs)
+        //     },
+        //     fail: function (err) {
+        //       wx.showToast({
+        //         title: "上传失败",
+        //         icon: "none",
+        //         duration: 2000
+        //       })
+        //     },
+        //     complete: function (result) {
+        //       console.log(result.errMsg)
+        //     }
+        //   })
+        // }
+      }
+    })
+
+  },
+  // 删除图片
+  deleteImg: function (e) {
+    var that = this
+    wx.showModal({
+      title: "提示",
+      content: "是否删除",
+      success: function (res) {
+        if (res.confirm) {
+          for (var i = 0; i < that.data.imgs.length; i++) {
+            if (i == e.currentTarget.dataset.index) that.data.imgs.splice(i, 1)
+          }
+          that.setData({
+            imgs: that.data.imgs
+          })
+        } else if (res.cancel) {
+          console.log("用户点击取消")
+        }
+      }
+    })
+  },
+
+  track() {
+    this.setData({
+      canvasshow: true
+    })
+    this.takePhoto();
+    this.interval = setInterval(this.takePhoto, 500);
+  },
+
+  async takePhoto() {
+    console.log("takePhoto")
+    var that = this
+    var takephonewidth
+    var takephoneheight
+    that.ctx.takePhoto({
+      quality: 'low',
+      success: (res) => {
+        // console.log(res.tempImagePath),
+        // 获取图片真实宽高
+        wx.getImageInfo({
+          src: res.tempImagePath,
+          success: function (res) {
+            takephonewidth = res.width,
+            takephoneheight = res.height
+          }
+        })
+        // console.log(takephonewidth, takephoneheight)
+        wx.getFileSystemManager().readFile({
+          filePath: res.tempImagePath, //选择图片返回的相对路径
+          encoding: 'base64', //编码格式
+          success: res => { //成功的回调
+            // console.log('data:image/png;base64,' + res.data),
+            wx.request({
+              url: "https://aip.baidubce.com/rest/2.0/face/v3/detect?access_token=24.a02ba5d76d3dc462e94baa37834033ee.2592000.1623984166.282335-23796596",
+              data: {
+                image: res.data,
+                image_type: "BASE64",
+                max_face_num: 10
+              },
+              method: 'POST',
+              dataType: "json",
+              header: {
+                'content-type': 'application/json'
+              },
+              success: function (res) {
+                console.log(res.data);
+                if (res.data.error_code === 0) {
+                  var ctx = wx.createContext()
+                  ctx.setStrokeStyle('#31859c')
+                  ctx.lineWidth = 3
+                  for (let j = 0; j < res.data.result.face_num; j++) {
+                    var cavansl = res.data.result.face_list[j].location.left / takephonewidth * that.data.windowWidth
+                    var cavanst = res.data.result.face_list[j].location.top / takephoneheight * that.data.windowWidth
+                    var cavansw = res.data.result.face_list[j].location.width / takephonewidth * that.data.windowWidth
+                    var cavansh = res.data.result.face_list[j].location.height / takephoneheight * that.data.windowWidth
+                    ctx.strokeRect(cavansl, cavanst, cavansw, cavansh)
+                  }
+                  wx.drawCanvas({
+                    canvasId: 'canvas',
+                    actions: ctx.getActions()
+                  })
+                } else {
+                  var ctx = wx.createContext()
+                  ctx.setStrokeStyle('#31859c')
+                  ctx.lineWidth = 3
+                  wx.drawCanvas({
+                    canvasId: 'canvas',
+                    actions: ctx.getActions()
+                  })
+                }
+
+                clearInterval(that.interval);
+                that.search()
+              },
+            })
+          }
+        })
+      }
+    })
+
+
+  },
+
+  search() {
+    let result = false;
+    console.log('search')
+    var that = this
+    that.setData({
+      who: ""
+    })
+    var takephonewidth
+    var takephoneheight
+    that.ctx.takePhoto({
+      quality: 'heigh',
+      success: (res) => {
+        // console.log(res.tempImagePath),
+        // 获取图片真实宽高
+        wx.getImageInfo({
+          src: res.tempImagePath,
+          success: function (res) {
+            takephonewidth = res.width,
+            takephoneheight = res.height
+          }
+        })
+        that.setData({
+          src: res.tempImagePath
+        }),
+          wx.getFileSystemManager().readFile({
+            filePath: that.data.src, //选择图片返回的相对路径
+            encoding: 'base64', //编码格式
+            success: res => {
+              wx.request({
+                url: "https://aip.baidubce.com/rest/2.0/face/v3/search?access_token=24.a02ba5d76d3dc462e94baa37834033ee.2592000.1623984166.282335-23796596'",
+                data: {
+                  image: res.data,
+                  image_type: "BASE64",
+                  group_id_list: "users",
+                  // max_face_num: 10,
+                  // match_threshold: 60,
+                },
+                method: 'POST',
+                dataType: "json",
+                header: {
+                  'content-type': 'application/json'
+                },
+                success: function (res) {
+                  console.log(res.data);
+                  if (res.data.result &&
+                  res.data.result.user_list.length > 0 &&
+                  res.data.result.user_list[0].score > 90){
+                      that.setData({
+                        register: 1,
+                      })
+                  } else {
+
+                    wx.showToast({
+                      title: '人脸识别失败,请重新签到',
+                      icon: 'error',
+                      duration: 3000
+                    })
+
+                    that.setData({
+                      register_btn: true,
+                    })
+                  }
+                  
+                },
+              })
+            }
+          })
+      }
+    })
+
+    return result;
+
+  },
+
+  onUnload: function () {
+    var that = this
+    clearInterval(that.interval)
+  },
+
+  error(e) {
+    console.log(e.detail)
+  }
+
 })

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/event/index",
     "pages/index/index",
     "pages/index/detail/index",
     "pages/login/index",
@@ -8,7 +9,6 @@
     "pages/my/edit/index",
     "pages/my/password/index",
     "pages/my/eventList/index",
-    "pages/event/index",
     "pages/logs/logs",
     "pages/detail/index",
     "pages/detail/components/routePlanningPage/index",

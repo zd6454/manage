@@ -101,11 +101,10 @@ Page({
   },
   //更新头像接口
   updateAvatar(img){
-    const img2 = new FormData();
-  img2.append('img', img);
-   wx.request({
-     url: 'https://api.linyunkuaixiu.cn:8006/users/change_avatar',
+   wx.uploadFile({
+     filePath: img,
      method: 'POST',
+     name: 'img',
      header:{
       'access-token': wx.getStorageSync('access-token'),
       'token-type': wx.getStorageSync('token-type'),
@@ -113,15 +112,15 @@ Page({
       expiry: wx.getStorageSync('expiry'),
       uid: wx.getStorageSync('uid'),
      },
-     data:img2,
+     url: 'https://api.linyunkuaixiu.cn:8006/users/change_avatar',
      success(res){
-     console.log(res)
-     },
-    fail(errs){
-    wx.showToast({
-      title: '修改失败',
-    })
-    }
+       console.log(res)
+       if(res.data){
+          wx.showToast({
+         title: '修改成功',
+       })
+       }
+     }
    })
   },
   //头像修改

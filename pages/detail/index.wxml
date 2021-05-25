@@ -56,14 +56,35 @@
     <view wx:if="{{steps==0}}">
       预案审核
     </view>
+
     <view wx:if="{{steps==1}}">
-      开始报名
       <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
     </view>
 
     <view wx:if="{{steps==2}}">
-      活动进行
-      <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
+      <view class="graph_title">活动签到</view>
+      <view class="divLine"></view>
+
+      <view class="register_btn" wx:if="{{register_btn==true}}">
+        <button class="register_button" type="primary" bindtap="handle_register">
+          点击签到
+        </button>
+      </view>
+      <view class="page-body" wx:elif="{{register==0 && register_btn==false}}">
+        <view class="page-body-wrapper">
+          <camera device-position="front" flash="off" binderror="error" style="width:100%;height:{{windowWidth}}px;"></camera>
+          <canvas wx:if="{{canvasshow}}" style="width: 100%;height:{{windowWidth}}px;position:absolute;" canvas-id="canvas"></canvas>
+        </view>
+      </view>
+      <view class="verify" wx:elif="{{register==1}}">
+          <image src="../../icons/access.png" class="vertify_img"></image>
+          <text class="vertify_title">签到成功</text>
+          <text class="vertify_notice">您已经签到成功，感谢您的参与！
+          </text>  
+      </view>
+
+      <view bindtap="gotoRoutePlanning">路径规划</view>
+
     </view>
 
     <view wx:if="{{steps==3}}">
@@ -116,7 +137,6 @@
           <text class="vertify_notice">您的活动报告已被审核通过，感谢您的参与！</text>  
         </view>
       </view>
-      <view bindtap="gotoRoutePlanning">查看活动地点路线</view>
 
     </view>
 

@@ -101,9 +101,6 @@ Page({
   },
   //更新头像接口
   updateAvatar(img){
-    const img2 = {
-      'img':img
-    }
    wx.uploadFile({
      filePath: img,
      method: 'POST',

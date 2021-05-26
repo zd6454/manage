@@ -50,13 +50,16 @@
   font-size: 25rpx;
 }
 .mainBody{
-  font-size: 31rpx;
+  font-size: 29rpx;
   padding: 10rpx 0rpx;
   display: flex;
-  font-weight: bold;
   align-items: center;
 }
 .type{
   font-size: 30rpx;
+  color: rgb(161, 154, 154);
   width: 150rpx;
+}
+.typename{
+  font-weight: bold;
 }

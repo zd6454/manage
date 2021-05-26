@@ -28,6 +28,9 @@ page{
   /* font-weight:bold; */
   margin-right: 5px;
 }
+.item_content{
+  color: rgb(141, 136, 136);
+}
 
 .progress_graph{
     background-color: white;

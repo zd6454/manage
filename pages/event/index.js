@@ -7,7 +7,7 @@ Page({
   data: {
     activityList:[],
     searchList:[],
-    currentPage:1,
+    currentPage:0,
     pageSize:10,
     totalList:0,
     haveMore:true,
@@ -76,7 +76,7 @@ Page({
         params={
           pageSize: 20,
           filter:{name:inputVal,status:1},
-          current: 1,
+          current: 0,
         }
       }else{
         params={

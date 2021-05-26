@@ -8,7 +8,7 @@ Page({
    list2:[
      {  avatar:'../../icons/inform.png',director_name:'书记',date:'2021-05-22',type:'负责人',name:'第一网格负责人:测试1号->测试2号'},
      {  avatar:'../../icons/inform.png',director_name:'书记',date:'2021-05-22',type:'最新通报',name:'6月3号全社区体检'},
-     {  avatar:'../../icons/inform.png',director_name:'书记',date:'2021-05-20',type:'活动结束',name:'修建草坪活动已结束'},
+     {  avatar:'../../icons/inform.png',director_name:'书记',date:'2021-05-20',type:'活动结束',name:'修剪草坪活动已结束'},
    ],
    
   },
@@ -54,8 +54,20 @@ Page({
    })
   },
   toDetail(e){
+    console.log(e)
+    const {item} = e.currentTarget.dataset;
+    let url='';
+    if(item.type==="发布活动"){
+     url=`../detail/index?activity_id=${item.id}`
+    }else{
+      if(item.type==='负责人'){
+        url='./detail/index?id=2'
+      }else if(item.type==='活动结束'){
+          url='./detail/index?id=3'
+      }
+    }
    wx.navigateTo({
-     url: './detail/index',
+     url: url,
    })
   },
  onLoad(options){

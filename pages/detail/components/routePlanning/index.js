@@ -38,9 +38,8 @@ Page({
               height: 32
             }]
           })
+          _this.getLocation(options.activity_location)
         }
-        _this.getLocation(options.activity_location)
-
       }
     })
   },

@@ -281,8 +281,19 @@ textarea {
   justify-content: left; 
   margin:auto; 
   background-color:red;
-  width: 30%;
+  width: 55%;
   font-size: 14px;
 }
+
+.route_botton{
+  width: 98%;
+  background-color: #ff1818;
+  padding: 10rpx;
+  margin: auto;
+  border-radius: 5rpx;
+  text-align: center;
+}
+
+
 
 

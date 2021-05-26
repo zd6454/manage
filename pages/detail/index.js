@@ -17,6 +17,7 @@ Page({
     activity_director: "xxx",
     participantInfo:null,
     content:null,
+    canSignIn:false,
 
     //设置当前完成步数
     steps: 0,
@@ -55,7 +56,40 @@ Page({
   onLoad: function (options) {
     console.log(options.activity_id);
     this.getActivity(options.activity_id);
+    this.isActivityLoc()
+  },
 
+  isActivityLoc(){
+    const that = this;
+    wx.getLocation({
+      success: function (res) {
+        if (res && res.longitude) {
+          that.getLocation(res)
+        }
+      }
+    })
+  },
+
+  getLocation(nowPosition){
+    const that = this;
+    wx.request({
+      // url:'https://apis.map.qq.com/ws/geocoder/v1/?city=武汉&address='+activity_location?activity_location:'武汉理工大学东社区'+'&key=SB4BZ-NURKK-NFMJ6-A63LK-MXYIE-SEFZI',
+      url:'https://apis.map.qq.com/ws/geocoder/v1/?city=武汉&address=武汉理工大学&key=SB4BZ-NURKK-NFMJ6-A63LK-MXYIE-SEFZI',
+      // url: 'https://restapi.amap.com/v3/geocode/geo?key='+key+'&city=北京&address=北京市朝阳区阜通东大街6号',
+      method:'GET',
+      success(res) {
+        // that.setData({canSignIn:true})
+        const eventPosition = res.data.result.location;
+        // console.log(nowPosition,eventPosition)
+        if((eventPosition.lng<=nowPosition.longitude+0.0005&&eventPosition.lng>=nowPosition.longitude-0.0005||nowPosition.longitude<=eventPosition.lng+0.0005&&nowPosition.longitude>=eventPosition.lng-0.0005)
+      &&(eventPosition.lat<=nowPosition.latitude+0.005&&eventPosition.lat>=nowPosition.latitude-0.005||nowPosition.latitude<=eventPosition.lay+0.005&&nowPosition.latitude>=eventPosition.lat-0.005)){
+        // that.setData({canSignIn:true})
+        }
+      },
+      fail(err) {
+        console.log(err)
+      }
+    })
   },
 
   handle_register(){
@@ -188,13 +222,12 @@ Page({
           activity_date: activity_data.date,
           activity_director: activity_data.director,
           steps: activity_data.status,
+          // steps:2,
         });
 
         if (activity_data.status==3){
           that.getParticipants(activity_data.id)
         }
-
-
       },
       fail(err) {
         console.log(err)
@@ -414,8 +447,6 @@ Page({
         })
       }
     })
-
-
   },
 
   search() {
@@ -452,8 +483,6 @@ Page({
                   image: res.data,
                   image_type: "BASE64",
                   group_id_list: "users",
-                  // max_face_num: 10,
-                  // match_threshold: 60,
                 },
                 method: 'POST',
                 dataType: "json",
@@ -472,7 +501,7 @@ Page({
 
                     wx.showToast({
                       title: '人脸识别失败,请重新签到',
-                      icon: 'error',
+                      icon: 'none',
                       duration: 3000
                     })
 

@@ -83,7 +83,7 @@ Page({
         // console.log(nowPosition,eventPosition)
         if((eventPosition.lng<=nowPosition.longitude+0.0005&&eventPosition.lng>=nowPosition.longitude-0.0005||nowPosition.longitude<=eventPosition.lng+0.0005&&nowPosition.longitude>=eventPosition.lng-0.0005)
       &&(eventPosition.lat<=nowPosition.latitude+0.005&&eventPosition.lat>=nowPosition.latitude-0.005||nowPosition.latitude<=eventPosition.lay+0.005&&nowPosition.latitude>=eventPosition.lat-0.005)){
-        // that.setData({canSignIn:true})
+        that.setData({canSignIn:true})
         }
       },
       fail(err) {
@@ -222,7 +222,7 @@ Page({
           activity_date: activity_data.date,
           activity_director: activity_data.director,
           steps: activity_data.status,
-          // steps:2,
+          // steps:1,
         });
 
         if (activity_data.status==3){

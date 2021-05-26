@@ -50,7 +50,7 @@
   font-size: 25rpx;
 }
 .mainBody{
-  font-size: 33rpx;
+  font-size: 31rpx;
   padding: 10rpx 0rpx;
   display: flex;
   font-weight: bold;

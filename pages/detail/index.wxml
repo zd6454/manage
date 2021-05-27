@@ -4,7 +4,7 @@
     <view class="name_pattern">
       <text class="info_name">{{activity_name}}</text>
       <view class="join_btn_area">
-        <button class="join_btn" size='mini' bindtap="submitParticipation" wx:if="{{steps==1}}">加入活动</button>
+        <button class="join_btn" size='mini' bindtap="submitParticipation" disabled="{{!isJoin}}" wx:if="{{steps==1}}">{{isJoin?'加入活动':'已加入'}}</button>
       </view>
     </view>
     <text class="info_items">

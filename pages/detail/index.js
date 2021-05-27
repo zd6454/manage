@@ -245,7 +245,14 @@ Page({
   },
 
   submit_report: function(){
-    console.log('img',this.data.imgs)
+    if(this.data.content == null){
+      wx.showModal({
+        title:'总结不能为空',
+        confirmText: "确定",
+        confirmColor: "#ff1818",
+      })
+    }
+    console.log('img',this.data.content)
     let formatData = {
       "content": this.data.content,
       // "img":this.data.imgs.tempFilePaths[0],
@@ -278,8 +285,6 @@ Page({
         console.log(err)
       }
     })
-
-
   },
 
   bindUpload: function (e) {

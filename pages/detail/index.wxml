@@ -1,7 +1,12 @@
 <!--pages/detail/index.wxml-->
 <view>
   <view class="info">
-    <text class="info_name">{{activity_name}}</text>
+    <view class="name_pattern">
+      <text class="info_name">{{activity_name}}</text>
+      <view class="join_btn_area">
+        <button class="join_btn" size='mini' bindtap="submitParticipation" wx:if="{{steps==1}}">加入活动</button>
+      </view>
+    </view>
     <text class="info_items">
       <text class="item_title">活动编号：</text>
       <text class="item_content">{{activity_id}}</text>

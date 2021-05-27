@@ -528,6 +528,53 @@ Page({
 
   error(e) {
     console.log(e.detail)
+  },
+
+  submitParticipation(){
+    let that = this;
+    wx.showModal({
+      title: '申请确认',
+      content: '是否确定申请加入活动？',
+      success: function (res) {
+        if (res.confirm) {
+          // console.log('用户点击确定')
+          wx.request({
+            url: 'https://wuhanhszl.com:3000/activities/' + that.data.activity_id + '/register',
+            method: 'POST',
+            header: {
+              'access-token': wx.getStorageSync('access-token'),
+              'token-type': wx.getStorageSync('token-type'),
+              client: wx.getStorageSync('client'),
+              expiry: wx.getStorageSync('expiry'),
+              uid: wx.getStorageSync('uid'),
+            },
+            credentials: 'omit',
+            success(res) {
+              console.log(res);
+              if (res.data.success==false){
+                console.log("加入失败！")
+              } else {
+                wx.showToast({
+                  title: '加入成功',
+                  icon: 'succes',
+                  duration: 2000,
+                  mask: true
+                })
+              }
+
+            },
+            fail(err) {
+              console.log(err)
+            }
+          })
+
+        } else {
+          console.log('用户点击取消')
+        }
+
+      }
+    })
+    
   }
 
 })

@@ -33,7 +33,7 @@ Page({
               id: 0,
               longitude: res.longitude,
               latitude: res.latitude,
-              // iconPath: '../../src/images/navi_s.png',
+              iconPath: '../../../../icons/placeNow.png',
               width: 32,
               height: 32
             }]
@@ -80,9 +80,9 @@ Page({
       id: 0,
       longitude: activityPos.lng,
       latitude: activityPos.lat,
-      // iconPath: '../../src/images/navi_e.png',
-      width: 32,
-      height: 32
+      iconPath: '../../../../icons/placeNow.png',
+      width: 22,
+      height: 30
     });
     points.push({
       longitude: activityPos.lng,

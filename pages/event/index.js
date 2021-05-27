@@ -115,21 +115,17 @@ Page({
             }else{
               that.setData({activityList:[...activityList,...res.data.data],currentPage:currentPage+1,totalList:newTotalList})
             }
-         
-          // wx.showToast({
-          //   title: '登录成功',
-          // })
-
           }else{
             wx.hideLoading({
               success: (res) => {},
             })
-            // wx.showModal({
-            //   title:'账号或密码错误！',
-            //   confirmText: "确定",
-            //   confirmColor: "#ff1818",
-            // })
-            // that.setData({name:'',password:''})
+            if(res.data.errors[0] == 'You need to sign in or sign up before continuing.'){
+              wx.showModal({
+                title:'请先登录',
+                confirmText: "确定",
+                confirmColor: "#ff1818",
+              })
+            }
           }
         },
         fail(err){

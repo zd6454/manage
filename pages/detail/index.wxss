@@ -12,26 +12,26 @@ page{
 
 .name_pattern{
   overflow: hidden;
-  display: block;
-  margin-bottom: 14px;
+  display: flex;
+  margin-bottom: 28rpx;
+  align-items: center;
+  justify-content: space-between;
 }
 .join_btn_area{
-  display: inline-block;
+  display: inline-flex;
   text-align: right;
-  padding-right: 20px;
-  float: right;
 }
 
 .join_btn{
     background-color:red;
-    font-size: 10px;
-    margin-left: 110px;
+    font-size: 32rpx !important;
     color: white;
 }
 
 .info .info_name{
   font-size: 20px;
   font-weight:bold;
+
 }
 
 .info .info_items{

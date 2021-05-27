@@ -64,6 +64,8 @@ Page({
         url='./detail/index?id=2'
       }else if(item.type==='活动结束'){
           url='./detail/index?id=3'
+      }else{
+        url='./detail/index'
       }
     }
    wx.navigateTo({

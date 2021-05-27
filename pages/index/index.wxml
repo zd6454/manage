@@ -10,7 +10,7 @@
             </view>
             <view class="mainBody">
                 <view class="type">{{item.type}}:</view>
-                <view >{{item.name}}</view>
+                <view  class="typename">{{item.name}}</view>
             </view>
          </view>
        </view>

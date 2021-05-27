@@ -32,13 +32,13 @@ Page({
   getAllEvents(){
     let that = this;
    wx.request({
-     url: 'https://wuhanhszl.com:3000/users/activities',
+     url: 'https://api.linyunkuaixiu.cn:8006//activities',
      method: 'GET',
      credentials: 'omit',
      skipErrorHandler: true,
      params: {
       pageSize:  5,
-      filter: {  },
+      filter: { status:'1' },
       current: 0,
      },
      header: {

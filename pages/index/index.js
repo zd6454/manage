@@ -6,7 +6,7 @@ Page({
   data: {
     list:[],
    list2:[
-     {  avatar:'../../icons/inform.png',director_name:'书记',date:'2021-05-22',type:'负责人',name:'第一网格负责人:测试1号->测试2号'},
+     {  avatar:'../../icons/inform.png',director_name:'书记',date:'2021-05-22',type:'负责人',name:'第一网格负责人:党员1号->党员2号'},
      {  avatar:'../../icons/inform.png',director_name:'书记',date:'2021-05-22',type:'最新通报',name:'6月3号全社区体检'},
      {  avatar:'../../icons/inform.png',director_name:'书记',date:'2021-05-20',type:'活动结束',name:'修剪草坪活动已结束'},
    ],

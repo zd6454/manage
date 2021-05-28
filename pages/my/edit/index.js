@@ -18,8 +18,8 @@ Page({
     wx.showToast({
       title: '修改成功',
     })
-    wx.navigateTo({
-      url: '../info/index',
+    wx.navigateBack({
+      delta: 1,
     })
   },
  //更新信息接口

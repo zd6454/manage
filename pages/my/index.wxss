@@ -65,8 +65,8 @@
    height:24rpx;
  }
  .tags{
-  font-size: 20rpx;
-  font-weight: bold;
+  font-size: 26rpx;
+  /* font-weight: bold; */
   display: inline-flex;
   color:#ff1818;
  }

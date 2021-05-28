@@ -87,7 +87,7 @@ Page({
       }
       
       wx.request({
-        url: 'https://wuhanhszl.com:3000/users/activities',
+        url: 'https://api.linyunkuaixiu.cn:8006/users/activities',
         method: 'GET',
         data:params,
         header: {

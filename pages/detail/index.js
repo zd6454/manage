@@ -171,7 +171,7 @@ Page({
   getParticipants(activity_id) {
     let that = this;
     wx.request({
-      url: 'https://wuhanhszl.com:3000/activities/' + activity_id +'/participant',
+      url: 'https://api.linyunkuaixiu.cn:8006/activities/' + activity_id +'/participant',
       method: 'GET',
       header: {
         'access-token': wx.getStorageSync('access-token'),
@@ -197,7 +197,7 @@ Page({
   getActivity(activity_id) {
     let that = this;
     wx.request({
-      url: 'https://wuhanhszl.com:3000/activities/'+activity_id,
+      url: 'https://api.linyunkuaixiu.cn:8006/activities/'+activity_id,
       method: 'GET',
       header: {
         'access-token': wx.getStorageSync('access-token'),
@@ -262,7 +262,7 @@ Page({
 
     let that = this;
     wx.request({
-      url: 'https://wuhanhszl.com:3000/activities/' + that.data.activity_id +'/report',
+      url: 'https://api.linyunkuaixiu.cn:8006/activities/' + that.data.activity_id +'/report',
       method: 'POST',
       data:formatData,
       header: {
@@ -544,7 +544,7 @@ Page({
         if (res.confirm) {
           // console.log('用户点击确定')
           wx.request({
-            url: 'https://wuhanhszl.com:3000/activities/' + that.data.activity_id + '/register',
+            url: 'https://api.linyunkuaixiu.cn:8006/activities/' + that.data.activity_id + '/register',
             method: 'POST',
             header: {
               'access-token': wx.getStorageSync('access-token'),

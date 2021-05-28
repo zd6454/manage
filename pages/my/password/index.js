@@ -30,7 +30,7 @@ Page({
       confirm_password: password2,
     };
      wx.request({
-       url: 'https://wuhanhszl.com:3000/users/password',
+       url: 'https://api.linyunkuaixiu.cn:8006/users/password',
        method: 'POST',
        header:{
         'access-token': wx.getStorageSync('access-token'),

@@ -83,7 +83,7 @@ Page({
   getAllEvents(){
     let that = this;
    wx.request({
-     url: 'https://wuhanhszl.com:3000/users/activities',
+     url: 'https://api.linyunkuaixiu.cn:8006/users/activities',
      method: 'GET',
      credentials: 'omit',
      skipErrorHandler: true,
@@ -111,7 +111,7 @@ Page({
     let that=this;
     const{id} = this.data.userInfo;
    wx.request({
-     url: `https://wuhanhszl.com:3000/analysis/${type}?id=${id}`,
+     url: `https://api.linyunkuaixiu.cn:8006/analysis/${type}?id=${id}`,
      method: 'GET',
      credentials: 'omit',
      success(res){

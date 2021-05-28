@@ -15,11 +15,10 @@
    width:100%;
  }
  .headimage .logoset{
-   width:562rpx;
-   height: 562rpx;
+   width:362rpx;
+   height: 362rpx;
    margin-top: 40rpx;
    border-radius: 110rpx ;
-   box-shadow: 0rpx 0rpx 90rpx 10rpx rgb(190, 45, 45);
  }
  .body{
    margin-top: 120rpx;

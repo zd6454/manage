@@ -1,7 +1,7 @@
 <view class="flex-style">
   <view class="flex-item {{status == 'car' ? 'active' : ''}}" data-status="car" bindtouchstart="goTo">驾车</view>
   <view class="flex-item {{status == 'walk' ? 'active' : ''}}" data-status="walk" bindtouchstart="goTo">步行</view>
-  <view class="flex-item {{status == 'bus' ? 'active' : ''}}" data-status="bus" bindtouchstart="goTo">公交</view>
+  <!-- <view class="flex-item {{status == 'bus' ? 'active' : ''}}" data-status="bus" bindtouchstart="goTo">公交</view> -->
   <view class="flex-item {{status == 'ride' ? 'active' : ''}}" data-status="ride" bindtouchstart="goTo">骑行</view>
 </view>
 <!-- <view class="map-inputtips-input">

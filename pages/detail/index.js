@@ -54,7 +54,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.activity_id);
+    this.setData({isJoin:options.isJoin==='true'})
     this.getActivity(options.activity_id);
     this.isActivityLoc()
   },
@@ -171,7 +171,7 @@ Page({
   getParticipants(activity_id) {
     let that = this;
     wx.request({
-      url: 'https://wuhanhszl.com:3000/activities/' + activity_id +'/participant',
+      url: 'https://api.linyunkuaixiu.cn:8006/activities/' + activity_id +'/participant',
       method: 'GET',
       header: {
         'access-token': wx.getStorageSync('access-token'),
@@ -197,7 +197,7 @@ Page({
   getActivity(activity_id) {
     let that = this;
     wx.request({
-      url: 'https://wuhanhszl.com:3000/activities/'+activity_id,
+      url: 'https://api.linyunkuaixiu.cn:8006/activities/'+activity_id,
       method: 'GET',
       header: {
         'access-token': wx.getStorageSync('access-token'),
@@ -245,7 +245,14 @@ Page({
   },
 
   submit_report: function(){
-    console.log('img',this.data.imgs)
+    if(this.data.content == null){
+      wx.showModal({
+        title:'总结不能为空',
+        confirmText: "确定",
+        confirmColor: "#ff1818",
+      })
+    }
+    console.log('img',this.data.content)
     let formatData = {
       "content": this.data.content,
       // "img":this.data.imgs.tempFilePaths[0],
@@ -255,7 +262,7 @@ Page({
 
     let that = this;
     wx.request({
-      url: 'https://wuhanhszl.com:3000/activities/' + that.data.activity_id +'/report',
+      url: 'https://api.linyunkuaixiu.cn:8006/activities/' + that.data.activity_id +'/report',
       method: 'POST',
       data:formatData,
       header: {
@@ -278,8 +285,6 @@ Page({
         console.log(err)
       }
     })
-
-
   },
 
   bindUpload: function (e) {
@@ -539,7 +544,7 @@ Page({
         if (res.confirm) {
           // console.log('用户点击确定')
           wx.request({
-            url: 'https://wuhanhszl.com:3000/activities/' + that.data.activity_id + '/register',
+            url: 'https://api.linyunkuaixiu.cn:8006/activities/' + that.data.activity_id + '/register',
             method: 'POST',
             header: {
               'access-token': wx.getStorageSync('access-token'),

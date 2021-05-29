@@ -19,11 +19,10 @@
    box-shadow: 0rpx 0rpx 90rpx 10rpx rgb(190, 45, 45);
  }
  .headimage .logoset{
-   width:562rpx;
+     width:562rpx;
    height: 462rpx;
-   border-radius: 110rpx ;
+	border-radius: 110rpx ;
    box-shadow: 0rpx 0rpx 90rpx 10rpx rgb(190, 45, 45) inset;
-   /* background:none; */
  }
  .body{
    margin-top: 120rpx;

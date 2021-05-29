@@ -18,8 +18,8 @@ Page({
     wx.showToast({
       title: '修改成功',
     })
-    wx.navigateTo({
-      url: '../info/index',
+    wx.navigateBack({
+      delta: 1,
     })
   },
  //更新信息接口
@@ -190,7 +190,7 @@ Page({
   getTree(){
     let that = this;
     wx.request({
-      url: 'https://wuhanhszl.com:3000/user_info/tree',
+      url: 'https://api.linyunkuaixiu.cn:8006/user_info/tree',
       method: 'GET',
       credentials: 'omit',
       success(res){

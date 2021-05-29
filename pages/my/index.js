@@ -40,16 +40,18 @@ Page({
      },
      credentials: 'omit',
     success(res){
-      const gender=res.data.gender==='女'?"../../icons/woman.png":'../../icons/man.png';
-      const{location} = res.data;
-      const address=location.area+location.building+'栋'+location.unit+'单元'+location.number+'号';
-     that.setData({isLogin:true,userInfo:res.data,gender,address})
-     that.getAvaityTime('user_activity_types')
-     that.getAvaityTime('user_month_hours')
-     that.getAllEvents()
-     setTimeout(()=>{
-         that.setOps()
-     },500)
+      if(res.data){
+        const gender=res.data.gender==='女'?"../../icons/woman.png":'../../icons/man.png';
+        const{location} = res.data;
+        const address=location.area+location.building+'栋'+location.unit+'单元'+location.number+'号';
+        that.setData({isLogin:true,userInfo:res.data,gender,address})
+        that.getAvaityTime('user_activity_types')
+        that.getAvaityTime('user_month_hours')
+        that.getAllEvents()
+        setTimeout(()=>{
+            that.setOps()
+        },500)
+      }
     },
    })
   },
@@ -81,7 +83,7 @@ Page({
   getAllEvents(){
     let that = this;
    wx.request({
-     url: 'https://wuhanhszl.com:3000/users/activities',
+     url: 'https://api.linyunkuaixiu.cn:8006/users/activities',
      method: 'GET',
      credentials: 'omit',
      skipErrorHandler: true,
@@ -109,7 +111,7 @@ Page({
     let that=this;
     const{id} = this.data.userInfo;
    wx.request({
-     url: `https://wuhanhszl.com:3000/analysis/${type}?id=${id}`,
+     url: `https://api.linyunkuaixiu.cn:8006/analysis/${type}?id=${id}`,
      method: 'GET',
      credentials: 'omit',
      success(res){

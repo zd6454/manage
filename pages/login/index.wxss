@@ -12,14 +12,18 @@
  .setbox{
    display: flex;
    justify-content: center;
-   width:100%;
+   margin: 100rpx auto;
+   border-radius: 110rpx ;
+   width:562rpx;
+   height: 462rpx;
+   box-shadow: 0rpx 0rpx 90rpx 10rpx rgb(190, 45, 45);
  }
  .headimage .logoset{
    width:562rpx;
-   height: 562rpx;
-   margin-top: 40rpx;
+   height: 462rpx;
    border-radius: 110rpx ;
-   box-shadow: 0rpx 0rpx 90rpx 10rpx rgb(190, 45, 45);
+   box-shadow: 0rpx 0rpx 90rpx 10rpx rgb(190, 45, 45) inset;
+   /* background:none; */
  }
  .body{
    margin-top: 120rpx;

@@ -20,7 +20,7 @@ Page({
     canSignIn:false,
 
     //设置当前完成步数
-    steps: 0,
+    steps: 2,
 
     // 当步骤为五步时步骤名不可超过五个汉字
     stepsList: ["预案审核", "开始报名", "活动进行", "活动完成", "活动结束"],
@@ -78,7 +78,7 @@ Page({
       // url: 'https://restapi.amap.com/v3/geocode/geo?key='+key+'&city=北京&address=北京市朝阳区阜通东大街6号',
       method:'GET',
       success(res) {
-        // that.setData({canSignIn:true})
+        that.setData({canSignIn:true})
         const eventPosition = res.data.result.location;
         // console.log(nowPosition,eventPosition)
         if((eventPosition.lng<=nowPosition.longitude+0.0005&&eventPosition.lng>=nowPosition.longitude-0.0005||nowPosition.longitude<=eventPosition.lng+0.0005&&nowPosition.longitude>=eventPosition.lng-0.0005)
@@ -221,8 +221,8 @@ Page({
           created_at:activity_data.created_at,
           activity_date: activity_data.date,
           activity_director: activity_data.director,
-          steps: activity_data.status,
-          // steps:1,
+          // steps: activity_data.status,
+          steps:2,
         });
 
         if (activity_data.status==3){

@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-   ops:{},
    userInfo:{},
    pieData:null,
    columnData:null,
@@ -18,6 +17,98 @@ Page({
    activeTab: 0,
    eventsIng:[],
    eventsAll:[],
+   ops:{
+    title: {
+      text: '党员个人参与活动类型比例',
+      subtext: null,
+      x: 'center',
+    },
+
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} {b} : {c} ({d}%)',
+    },
+    series: [
+      {
+        name: '活动次数',
+        type: 'pie',
+        radius: '40%',
+        center: ['50%', '60%'],
+        data: [
+          { value: 0, name: '安全巡逻' },
+          { value: 0, name: '文体活动' },
+          { value: 0, name: '宣传教育' },
+          { value: 0, name: '关爱帮扶' },
+          { value: 0, name: '数据搜集整理' },
+          { value: 0, name: '新闻宣传' },
+          { value: 0, name: '心理法律咨询' },
+          { value: 0, name: '应急' },
+        ],
+        itemStyle: {
+          emphasis: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)',
+          },
+          normal: {
+            color(params) {
+              // 自定义颜色
+              const colorList = [
+                '#ffccc7',
+                '#ffa39e',
+                '#ff7875',
+                '#ff4d4f',
+                '#f5222d',
+                '#cf1322',
+                '#a8071a',
+                '#820014',
+                '#5c0011',
+              ];
+              return colorList[params.dataIndex];
+            },
+            label: {
+              show: true,
+              formatter: '{b} : {c} ({d}%)',
+            },
+            labelLine: { show: true },
+          },
+        },
+      },
+    ],
+   },
+   ops2:{
+    title: {
+      text: '党员个人近6月参与活动次数',
+      x: 'center',
+    },
+    yAxis: {},
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      },
+      confine: true
+    },
+    legend: {},
+    xAxis: {
+      data: ["2021-05", "2021-04", "2021-03", "2021-02", "2021-01", "2020-12", "2020-11", "2020-10", "2020-09", "2020-08", "2020-07", "2020-06"],
+    },
+    series: [
+      {
+        name: '',
+        type: 'bar',
+        data: [33, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        barWidth: 15,
+        itemStyle: {
+          normal: {
+            color() {
+              return '#ff4d4f';
+            },
+          },
+        },
+      },
+    ],
+   }
    },
 
    onlogin(){
@@ -48,9 +139,6 @@ Page({
         that.getAvaityTime('user_activity_types')
         that.getAvaityTime('user_month_hours')
         that.getAllEvents()
-        setTimeout(()=>{
-            that.setOps()
-        },500)
       }
     },
    })
@@ -125,7 +213,9 @@ Page({
          pieData:res.data
        })
        }
-
+       setTimeout(()=>{
+        that.setOps()
+    },1000)
      }
    })
   },

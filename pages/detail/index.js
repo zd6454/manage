@@ -20,7 +20,7 @@ Page({
     canSignIn:false,
 
     //设置当前完成步数
-    steps: 2,
+    steps: 0,
 
     // 当步骤为五步时步骤名不可超过五个汉字
     stepsList: ["预案审核", "开始报名", "活动进行", "活动完成", "活动结束"],
@@ -221,8 +221,8 @@ Page({
           created_at:activity_data.created_at,
           activity_date: activity_data.date,
           activity_director: activity_data.director,
-          // steps: activity_data.status,
-          steps:2,
+          steps: activity_data.status,
+          // steps:2,
         });
 
         if (activity_data.status==3){

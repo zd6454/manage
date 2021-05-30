@@ -78,7 +78,7 @@ Page({
       // url: 'https://restapi.amap.com/v3/geocode/geo?key='+key+'&city=北京&address=北京市朝阳区阜通东大街6号',
       method:'GET',
       success(res) {
-        // that.setData({canSignIn:true})
+        that.setData({canSignIn:true})
         const eventPosition = res.data.result.location;
         // console.log(nowPosition,eventPosition)
         if((eventPosition.lng<=nowPosition.longitude+0.0005&&eventPosition.lng>=nowPosition.longitude-0.0005||nowPosition.longitude<=eventPosition.lng+0.0005&&nowPosition.longitude>=eventPosition.lng-0.0005)
@@ -222,7 +222,7 @@ Page({
           activity_date: activity_data.date,
           activity_director: activity_data.director,
           steps: activity_data.status,
-          // steps:1,
+          // steps:2,
         });
 
         if (activity_data.status==3){

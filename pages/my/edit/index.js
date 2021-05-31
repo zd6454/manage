@@ -253,7 +253,11 @@ Page({
   },
   transferOrgTree  (data)  {
     const newData = data;
-    newData.label = newData.name;
+    if (newData.orgType==1){
+      newData.label = newData.name+'网格';
+    }else{
+      newData.label = newData.name;
+    }
     newData.value = newData.id;
     if (newData.children.length > 0) {
       newData.children.forEach((item) => this.transferOrgTree(item));

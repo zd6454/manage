@@ -46,9 +46,9 @@ Page({
       {myinfo:"出生年月",content:birth},
       {myinfo:"入党时间",content:res.data.enter_party_time},
       {myinfo:"党员专长",content:tags},
-      {myinfo:"所属组织",content:res.data.organization},
-      {myinfo:"地址",content:address},
-      {myinfo:"楼栋",content:res.data.location.building+'栋'},
+      {myinfo:"所属楼栋小组",content:res.data.organization},
+      {myinfo:"居住小区",content:address},
+      {myinfo:"居住楼栋",content:res.data.location.building+'栋'},
       {myinfo:"单元",content:res.data.location.unit+'单元'},
       {myinfo:"门牌号",content:res.data.location.number+'号'},
       ]
